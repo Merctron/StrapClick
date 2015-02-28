@@ -1,0 +1,27 @@
+
+
+#masternav {
+	background-color: black;
+}
+
+#display {
+	text-align: center;
+	visibility: hidden;
+}
+
+#edit {
+	text-align: center;
+}
+
+#view {
+	text-align: center;	
+}
+
+#homeContainer {
+	text-align: center;
+	margin-top: 10%;
+}
+
+.edbtn {
+
+}

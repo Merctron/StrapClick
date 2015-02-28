@@ -1,0 +1,124 @@
+<html ng-app="strapClick">
+
+	<head>
+		<title>strapClick</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
+		<script src="js/MasterController.js"></script>
+
+
+		<script>
+			// var socket = io.connect('http://6d6ba094.ngrok.com');
+   //  		// on every message recived we print the new datas inside the #container div
+   //  		socket.on('notification', function (data) {
+   //      		// convert the json string into a valid javascript object
+   //      		var _data = JSON.parse(data);
+   //      		console.log(_data);
+   //      		$('#ansio').html(_data.answer);
+   //  		});
+		</script>
+
+		<link href="css/global.css" rel="stylesheet">
+		<!-- Bootstrap core CSS -->
+    	<link href="css/bootstrap.min.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<div class="container-fluid" ng-controller="SessionPageController">
+
+			<div id="masternav" class="navbar-fixed-top navbar" >
+				<a class="navbar-brand" id="mbutton" href="#">strapClick</a>
+					<ul class="nav navbar-nav pull-right">
+                		<li class="mitem"><a href="#">Home</a></li>
+                		<li class="mitem"><a href="#about">About</a></li>
+                		<li class="mitem"><a href="#contact">Contact</a></li>
+             		</ul>
+			</div>
+
+			<br/>
+			<br/>
+			<br/>
+
+			<div class="row">
+				<div class="span12">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#view" data-href="#view" data-toggle="tab">View</a></li>
+						<li class=""><a href="#edit" data-href="#edit" data-toggle="tab">Edit</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<br/>
+
+			<div class="tab-content">
+				<div id="view" class="tab-pane active">
+					<div class="row">
+						<div class="col-xs-2">
+							<p><a href="#" class="btn btn-info btn-lg" ng-click="startDisplaySession()">Start Session</a></p>
+							<p><a href="#" class="btn btn-info btn-lg" ng-click="stopDisplaySession()">Stop Session</a></p>
+							<p><a href="#" class="btn btn-info btn-lg" ng-click="showSessionAnswers()">View Answers</a></p>
+						</div>
+						<div id="display" class="col-xs-8">
+							<h3>Question: {{ qToDisplay }}</h3>
+							<br/>
+							<div id="answerOptions">
+								<h3>Options:</h3>
+								<h4 ng-repeat="x in ansoptionVals[qdindex] track by $index">{{ x }}</h4>
+							</div>
+						</div>
+						<div class="col-xs-2">
+							<p><a href="#" class="btn btn-info btn-lg" ng-click="decrementQ()">Prev</a>
+        					<a href="#" class="btn btn-info btn-lg" ng-click="incrementQ()">Next</a></p>
+        					<p><a href="#" class="btn btn-info btn-lg" ng-click="askQ()">Ask Question</a></p>
+        					<p><a href="#" class="btn btn-info btn-lg" ng-click="stopA()">Stop Answers</a></p>
+        					<p>Session Name: {{sessName}}</p>
+        					<p id="ansio">Answer: </p>
+						</div>
+					</div>
+				</div>
+				<div id="edit" class="tab-pane">
+					<div class="row">
+						<div class="col-xs-4">
+							<p>Options:</p>
+							<p ><input type="text" placeholder="Option" ng-model="optionValue" ></input>
+								<a href="#" class="btn btn-info btn-sm edbtn" ng-click="addOption()">+ Option</a>
+							</p>
+							<p ng-repeat="x in ansoptionVals[qindex] track by $index">{{ x }}</p>
+						</div>
+						<div class="col-xs-4">
+							<p>Question: {{qToEdit}}</p>
+							<p><input type="text" placeholder="Question" ng-model="questionValue" ></input>
+								<a href="#" class="btn btn-info btn-sm edbtn" ng-click="addQuestion()">+ Question</a>
+							</p>
+							<p ng-repeat="x in questionVals track by $index" >
+								{{ x }}
+								<a href="#" class="btn btn-info btn-sm edbtn" ng-click="showOptions(x)">Select</a>
+							</p>
+						</div>
+						<div class="col-xs-4">
+							<p><input type="text" placeholder="Session Name" ng-model="sessName" ></input></p>
+							<p><a href="#" class="btn btn-info btn-sm edbtn">Save question set for this session</a></p>
+							<p><a href="#" class="btn btn-info btn-sm edbtn" ng-click="clearQuestions()">Clear question set for this session</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+
+
+
+
+
+
+
+		<!-- Bootstrap core JavaScript
+    	================================================== -->
+    	<!-- Placed at the end of the document so the pages load faster -->
+    	<script src="js/bootstrap.min.js"></script>
+	</body>
+
+
+</html>
