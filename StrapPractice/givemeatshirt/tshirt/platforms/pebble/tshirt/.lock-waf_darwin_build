@@ -1,0 +1,8 @@
+argv = ['/usr/local/Cellar/pebble-sdk/2.8.1/Pebble/waf', 'configure', 'build']
+environ = {'TERM_SESSION_ID': '28C4313F-24F2-4B03-BDDC-C125B08649AB', 'PYTHONPATH': '/usr/local/Cellar/pebble-sdk/2.8.1/libexec/lib/python2.7/site-packages:/usr/local/Cellar/pebble-sdk/2.8.1/lib/python2.7/site-packages', 'SSH_AUTH_SOCK': '/tmp/launch-4voeVc/Listeners', 'TERM_PROGRAM_VERSION': '326', 'SHELL': '/bin/bash', 'LOGNAME': 'ZachMain', 'USER': 'ZachMain', 'HOME': '/Users/ZachMain', 'PATH': '/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/local/Cellar/pebble-sdk/2.8.1/arm-cs-tools/bin', 'TMPDIR': '/var/folders/4l/cntz6nkn0hd0ht_rlsvtbb_h0000gn/T/', 'TERM_PROGRAM': 'Apple_Terminal', 'LANG': 'en_US.UTF-8', 'TERM': 'xterm-256color', 'Apple_PubSub_Socket_Render': '/tmp/launch-tWMIVe/Render', 'SHLVL': '3', '__CF_USER_TEXT_ENCODING': '0x1F5:0:0', 'PWD': '/Users/ZachMain/givemeashirt/tshirt/platforms/pebble/tshirt', '_': '/usr/local/Cellar/pebble-sdk/2.8.1/Pebble/waf', '__CHECKFIX1436934': '1'}
+files = ['/Users/ZachMain/givemeashirt/tshirt/platforms/pebble/tshirt/wscript']
+hash = -4920802154914160327
+options = {'files': '', 'jobs': 8, 'verbose': 0, 'nocache': False, 'progress_bar': 0, 'timestamp': None, 'distcheck_args': None, 'top': '', 'destdir': '', 'keep': 0, 'zones': '', 'debug': False, 'prefix': '/usr/local/', 'download': False, 'force': False, 'targets': '', 'out': ''}
+out_dir = '/Users/ZachMain/givemeashirt/tshirt/platforms/pebble/tshirt/build'
+run_dir = '/Users/ZachMain/givemeashirt/tshirt/platforms/pebble/tshirt'
+top_dir = '/Users/ZachMain/givemeashirt/tshirt/platforms/pebble/tshirt'
