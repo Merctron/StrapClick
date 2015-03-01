@@ -6,7 +6,7 @@ var qs = require('querystring');
 var request = require('request');
 
 var answers = [];
-var sessions = [];
+var sessions = ["sample1", "sample2"];
 var curques = [];
 var curans = [];
 
@@ -86,11 +86,18 @@ var server = http.createServer( function(req, res) {
         }
       }
       else if (post.requestType == "client") {
+        if (post.session == "clientStart") {
+          console.log(post);
+          console.log(req.method);
+          resp.success = false;
+          resp.sessions = sessions;     
+          res.end(JSON.stringify(resp));
+        }
+
         if (sessionExists(post.session)) {
           answers[sessionIndex(post.session)].push(post.answer);
   
           console.log(post);
-          resp.consoleLog = post;
           console.log(req.method);
           resp.curans = curans[sessionIndex(post.session)];
           resp.curques = curques[sessionIndex(post.session)];
@@ -99,7 +106,6 @@ var server = http.createServer( function(req, res) {
         }
         else {
           console.log(post);
-          resp.consoleLog = post;
           console.log(req.method);
           resp.success = false;     
           res.end(JSON.stringify(resp));

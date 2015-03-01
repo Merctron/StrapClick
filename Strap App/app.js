@@ -1,97 +1,96 @@
-/*
-App for Project Echo
-Zach Perry - perryz@purdue.edu
-Matthew Tracy - tracy1@purdue.edu
-HackIllinois 2015 - 2-27-15
-*/
-
 var StrapKit = require('strapkit');
 
-//app id to allow strap tracking
-var app_id = "MSY5JXgCKJmZH44KC";
+// Show splash screen while waiting for data
+var splashPage = StrapKit.UI.Page();
+var sessionsPage = StrapKit.UI.Page();
+var optionsPage = StrapKit.UI.Page();
 
-function old() {
+// // Text element to inform user
+// var txt = StrapKit.UI.TextView({
+//     position: 'center',
+//     text: 'StrapClick!'
+// });
 
-    var menuItems = ['A', 'B', 'C']; //answer options. can be changed/more can be added
+// // Add to splashPage and show
+// splashPage.addView(txt);
 
-    StrapKit.Metrics.logEvent("MenuItems", menuItems); //console log
+var card = StrapKit.UI.Card({
+  title: "StrapClick!",
+  body: "Join a session."
+});
 
-    var resultsPage = StrapKit.UI.Page();
-        // Construct Menu to show to user
-    var resultsMenu = StrapKit.UI.ListView({
-        items: menuItems //creates results menu base on the given menu items
-    });
+var mItem = {
+    title: '',
+    subtitle: '',
+    data: {info: ""}
+}
 
-    // Add an action for SELECT_BUTTON
-    resultsMenu.setOnItemClick(function(e) {
-    
-        var info = e.item.data; //store info of button licked
-
-        StrapKit.HttpClient({
-            url: 'http://localhost?button='+info,   //sends the HTTP request for answer
-            type: 'json'
-
-        },function(){
-
-        //detail page to confirm that the users' answer has been submitted
-        var detailPage = StrapKit.UI.Page();
-            // Create the Card for detailed view
-            var detailCard = StrapKit.UI.Card({
-                title: 'Your response has been submitted!',
-                body: ''
-            });
-            detailPage.addView(detailCard);
-            detailPage.show();
-
-        });
-
-    });
-
-    // Show the Menu, hide the splash
-    resultsPage.addView(resultsMenu);
-    resultsPage.show();
-
-    StrapKit.Metrics.logEvent("show/resultsPage");
-
+var menuItems = [
+    {
+        title: 'A',
+        subtitle: 'Option A',
+        data: {info: "A"}
     },
-    //Error catching
-    function(error) {
-        console.log(error);
-}
+    {
+        title: 'B',
+        subtitle: 'Option B',
+        data: {info: "B"}
+    },
+    {
+        title: 'C',
+        subtitle: 'Option C',
+        data: {info: "C"}
+    },
+    {
+        title: 'D',
+        subtitle: 'Option D',
+        data: {info: "D"}
+    },
+    {
+        title: 'E',
+        subtitle: 'Option E',
+        data: {info: "E"}
+    }];
 
-function main(){
-    // call server for list of sessions
+var resultsMenu = StrapKit.UI.ListView({
+    items: menuItems
+});
+
+
+
+
+
+splashPage.addView(card);
+
+//optionsPage.addView(resultsMenu);
+
+
+splashPage.show();
+
+card.setOnClick(function() {
     StrapKit.HttpClient({
-            url: 'http://localhost?button='+info,   //sends the HTTP request for answer
-            type: 'json'
-        },function(sessions){
-            // select session
-            // parse through the sessions and display in listview
-                // fetch possible answers
-                StrapKit.HttpClient({
-                        url: 'http://localhost?button='+info,   //sends the HTTP request for answer
-                        type: 'json'
-                    },function(answers){
-                        // pick an answer
-                        // display answers in listview
-                            // send ans to srv
-                            StrapKit.HttpClient({
-                                    url: 'http://localhost?button='+info,   //sends the HTTP request for answer
-                                    type: 'json',
-                                    method: 'POST'
-                                },function(notif){
-                                    //detail page to confirm that the users' answer has been submitted
-                                    var detailPage = StrapKit.UI.Page();
-                                        // Create the Card for detailed view
-                                        var detailCard = StrapKit.UI.Card({
-                                            title: 'Your response has been submitted!',
-                                            body: ''
-                                        });
-                                        detailPage.addView(detailCard);
-                                        detailPage.show();
+        url: 'http://6d6ba094.ngrok.com',
+        method: 'POST',
+        data: { 'session': 'clientStart', 'requestType': 'client'},
+        headers: { 'content-type': 'application/json'},
+    },
+    function (data) {
+        var sessionList = [];
+        for (i = 0; i < data.sessions.length; i++) {
+        //     var sessItem = {
+        //         title: data.sessions[i],
+        //         subtitle: 'Session',
+        //         data: {info: "Session"}
+        //     }
+        //     sessionList.push(sessItem);
+        // }
+        // var sessionMenu = StrapKit.UI.ListView({
+        //     items: sessionList
+        }
+        sessionsPage.addView(resultsMenu);
+        sessionsPage.show();
+    }
+    , console.log("unsuccessful"));
+});
 
-                                    });
-                    });
-        });
-}
-main()
+
