@@ -23,6 +23,10 @@
             android:name=".AnsSession"
             android:label="@string/title_activity_ans_session" >
         </activity>
+        <activity
+            android:name=".Splash"
+            android:label="@string/title_activity_splash" >
+        </activity>
     </application>
 
 </manifest>
