@@ -14,6 +14,7 @@ var confirmPage = StrapKit.UI.Page();
 
 // // Add to splashPage and show
 // splashPage.addView(txt);
+var masterSession = "";
 
 var card = StrapKit.UI.Card({
   title: "StrapClick!",
@@ -62,6 +63,10 @@ var resultsMenu = StrapKit.UI.ListView({
     items: menuItems
 });
 
+var sessionMenu = StrapKit.UI.ListView({
+    items: menuItems
+});
+
 
 
 
@@ -81,21 +86,66 @@ card.setOnClick(function() {
         headers: { 'content-type': 'application/json'},
     },
     function (data) {
-        var sessionList = data.sessions;
-        //for (i = 0; i < sessionList.length; i++) {
-             //var sessItem = {
-                //title: data.sessions[i],
-                //subtitle: 'Session',
-                //data: {info: "Session"}
-             //}
-             //sessionList.push(sessItem);
-        //}
-        //var sessionMenu = StrapKit.UI.ListView({
-             //items: sessionList
-        //});
+        //var sessionList = data.sessions;
+
+        var sessMenuItems = [
+        {
+            title: "ngrok",
+            subtitle: 'Session 1',
+            data: {info: "ngrok"}
+        },
+        {
+            title: "cs252",
+            subtitle: 'Session 2',
+            data: {info: "E"}
+        },
+        {
+            title: "Soccer Club Callout",
+            subtitle: 'Session 3',
+            data: {info: "E"}
+        },
+        {
+            title: "Food Survey",
+            subtitle: 'Session 4',
+            data: {info: "E"}
+        },
+        {
+            title: "CS Conference",
+            subtitle: 'Session 5',
+            data: {info: "E"}
+        }];
+
+        sessionMenu = StrapKit.UI.ListView({
+             items: sessMenuItems
+        });
         
-        sessionsPage.addView(resultsMenu);
+        sessionsPage.addView(sessionMenu);
         sessionsPage.show();
+
+        sessionMenu.setOnItemClick(function(e) {
+        var session = "";
+        switch (e.itemIndex) {
+            case 0:
+                masterSession = "ngrok";
+                break;
+            case 1:
+                masterSession = "cs252";
+                break;
+            case 2:
+                masterSession = "Soccer Club Callout";
+                break;
+            case 3:
+                masterSession = "Food Survey";
+                break;
+            case 4:
+                masterSession = "CS Conference";
+                break;
+        }
+        optionsPage.addView(resultsMenu);
+        optionsPage.show();
+        });
+
+
     }
     , console.log("unsuccessful"));
 });
@@ -123,7 +173,7 @@ resultsMenu.setOnItemClick(function(e) {
     StrapKit.HttpClient({
         url: 'http://6d6ba094.ngrok.com',
         method: 'POST',
-        data: { 'session': 'ngrok', 'requestType': 'client', 'answer': answer},
+        data: { 'session': masterSession, 'requestType': 'client', 'answer': answer},
         headers: { 'content-type': 'application/json'},
     },
     function (data) {

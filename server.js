@@ -90,7 +90,7 @@ var server = http.createServer( function(req, res) {
           console.log(post);
           console.log(req.method);
           resp.success = false;
-          resp.sessions = sessions;     
+          resp.sessionvar = "ngrok";     
           res.end(JSON.stringify(resp));
         }
 
