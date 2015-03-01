@@ -1,7 +1,7 @@
 <html ng-app="strapClick">
 
 	<head>
-		<title>strapClick</title>
+		<title>StrapClick</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 		<script src="js/jquery-1.11.2.min.js"></script>
 		<script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
@@ -28,9 +28,9 @@
 		<div class="container-fluid" ng-controller="SessionPageController">
 
 			<div id="masternav" class="navbar-fixed-top navbar" >
-				<a class="navbar-brand" id="mbutton" href="#">strapClick</a>
+				<a class="navbar-brand" id="mbutton" href="index.html"><b>StrapClick</b></a>
 					<ul class="nav navbar-nav pull-right">
-                		<li class="mitem"><a href="#">Home</a></li>
+                		<li class="mitem"><a href="index.html">Home</a></li>
                 		<li class="mitem"><a href="#about">About</a></li>
                 		<li class="mitem"><a href="#contact">Contact</a></li>
              		</ul>
@@ -43,8 +43,9 @@
 			<div class="row">
 				<div class="span12">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#view" data-href="#view" data-toggle="tab">View</a></li>
-						<li class=""><a href="#edit" data-href="#edit" data-toggle="tab">Edit</a></li>
+						<li class="active"><a href="#edit" data-href="#edit" data-toggle="tab">Edit</a></li>
+						<li class=""><a href="#view" data-href="#view" data-toggle="tab">View</a></li>
+						<li class=""><a href="#data" data-href="#data" data-toggle="tab">Data</a></li>
 					</ul>
 				</div>
 			</div>
@@ -52,7 +53,7 @@
 			<br/>
 
 			<div class="tab-content">
-				<div id="view" class="tab-pane active">
+				<div id="view" class="tab-pane">
 					<div class="row">
 						<div class="col-xs-2">
 							<p><a href="#" class="btn btn-info btn-lg" ng-click="startDisplaySession()">Start Session</a></p>
@@ -60,10 +61,11 @@
 							<p><a href="#" class="btn btn-info btn-lg" ng-click="showSessionAnswers()">View Answers</a></p>
 						</div>
 						<div id="display" class="col-xs-8">
-							<h3>Question: {{ qToDisplay }}</h3>
+							<h1>Session Name: {{sessName}}</h1>
+							<h2>Question: {{ qToDisplay }}</h2>
 							<br/>
 							<div id="answerOptions">
-								<h3>Options:</h3>
+								<h2>Options:</h2>
 								<h4 ng-repeat="x in ansoptionVals[qdindex] track by $index">{{ x }}</h4>
 							</div>
 						</div>
@@ -72,12 +74,10 @@
         					<a href="#" class="btn btn-info btn-lg" ng-click="incrementQ()">Next</a></p>
         					<p><a href="#" class="btn btn-info btn-lg" ng-click="askQ()">Ask Question</a></p>
         					<p><a href="#" class="btn btn-info btn-lg" ng-click="stopA()">Stop Answers</a></p>
-        					<p>Session Name: {{sessName}}</p>
-        					<p id="ansio">Answer: </p>
 						</div>
 					</div>
 				</div>
-				<div id="edit" class="tab-pane">
+				<div id="edit" class="tab-pane active">
 					<div class="row">
 						<div class="col-xs-4">
 							<p>Options:</p>
@@ -97,9 +97,21 @@
 							</p>
 						</div>
 						<div class="col-xs-4">
+							<p>Session:</p>
 							<p><input type="text" placeholder="Session Name" ng-model="sessName" ></input></p>
 							<p><a href="#" class="btn btn-info btn-sm edbtn">Save question set for this session</a></p>
 							<p><a href="#" class="btn btn-info btn-sm edbtn" ng-click="clearQuestions()">Clear question set for this session</a></p>
+						</div>
+					</div>
+				</div>
+				<div id="data" class="tab-pane">
+					<div class="row">
+						<div class="col-xs-12 datadisplay">
+							<h2 id="opa">Option A: 0</h2>
+							<h2 id="opb">Option B: 0</h2>
+							<h2 id="opc">Option C: 0</h2>
+							<h2 id="opd">Option D: 0</h2>
+							<h2 id="ope">Option E: 0</h2>
 						</div>
 					</div>
 				</div>
