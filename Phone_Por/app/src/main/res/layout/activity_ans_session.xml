@@ -1,60 +1,13 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.nissanoz.phone_por.AnsSession">
+<?xml version="1.0"?>
 
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="A"
-        android:id="@+id/buttona"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="B"
-        android:id="@+id/buttonb"
-        android:layout_below="@+id/buttona"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="C"
-        android:id="@+id/buttonc"
-        android:layout_below="@+id/buttonb"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="D"
-        android:id="@+id/buttond"
-        android:layout_below="@+id/buttonc"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="E"
-        android:id="@+id/buttone"
-        android:layout_below="@+id/buttond"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Answer Question"
-        android:id="@+id/textViewStatus"
-        android:layout_above="@+id/buttona"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="49dp" />
+    <RelativeLayout tools:context="com.example.nissanoz.phone_por.AnsSession" android:paddingBottom="@dimen/activity_vertical_margin" android:paddingTop="@dimen/activity_vertical_margin" android:paddingRight="@dimen/activity_horizontal_margin" android:paddingLeft="@dimen/activity_horizontal_margin" android:layout_height="match_parent" android:layout_width="match_parent" xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_marginBottom="90dp" android:layout_marginTop="50dp" android:layout_centerHorizontal="true" android:layout_alignParentTop="true" android:id="@+id/tView" android:textSize="@dimen/abc_text_size_medium_material" android:text="New Text"/>
+    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_centerHorizontal="true" android:id="@+id/buttona" android:text="A" android:layout_below="@+id/textView"/>
+    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_centerHorizontal="true" android:id="@+id/buttonb" android:text="B" android:layout_below="@+id/buttona"/>
+    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_centerHorizontal="true" android:id="@+id/buttonc" android:text="C" android:layout_below="@+id/buttonb"/>
+    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_centerHorizontal="true" android:id="@+id/buttond" android:text="D" android:layout_below="@+id/buttonc"/>
+    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_centerHorizontal="true" android:id="@+id/buttone" android:text="E" android:layout_below="@+id/buttond"/>
+    <RadioButton android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/bRadio" android:text="Presentation" android:checked="false" android:layout_alignParentStart="true" android:layout_alignParentLeft="true" android:layout_alignBottom="@+id/bFetch"/>
+    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/bFetch" android:text="Fetch" android:layout_below="@+id/buttone" android:layout_alignParentEnd="true" android:layout_alignParentRight="true" style="?android:attr/buttonStyleSmall"/>
 
 </RelativeLayout>
