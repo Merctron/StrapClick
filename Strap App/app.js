@@ -4,6 +4,7 @@ var StrapKit = require('strapkit');
 var splashPage = StrapKit.UI.Page();
 var sessionsPage = StrapKit.UI.Page();
 var optionsPage = StrapKit.UI.Page();
+var confirmPage = StrapKit.UI.Page();
 
 // // Text element to inform user
 // var txt = StrapKit.UI.TextView({
@@ -17,6 +18,11 @@ var optionsPage = StrapKit.UI.Page();
 var card = StrapKit.UI.Card({
   title: "StrapClick!",
   body: "Join a session."
+});
+
+var card2 = StrapKit.UI.Card({
+  title: "Sent!",
+  body: "Go back to answer next question."
 });
 
 var mItem = {
@@ -61,7 +67,7 @@ var resultsMenu = StrapKit.UI.ListView({
 
 
 splashPage.addView(card);
-
+confirmPage.addView(card2);
 //optionsPage.addView(resultsMenu);
 
 
@@ -75,22 +81,58 @@ card.setOnClick(function() {
         headers: { 'content-type': 'application/json'},
     },
     function (data) {
-        var sessionList = [];
-        for (i = 0; i < data.sessions.length; i++) {
-        //     var sessItem = {
-        //         title: data.sessions[i],
-        //         subtitle: 'Session',
-        //         data: {info: "Session"}
-        //     }
-        //     sessionList.push(sessItem);
-        // }
-        // var sessionMenu = StrapKit.UI.ListView({
-        //     items: sessionList
-        }
+        var sessionList = data.sessions;
+        //for (i = 0; i < sessionList.length; i++) {
+             //var sessItem = {
+                //title: data.sessions[i],
+                //subtitle: 'Session',
+                //data: {info: "Session"}
+             //}
+             //sessionList.push(sessItem);
+        //}
+        //var sessionMenu = StrapKit.UI.ListView({
+             //items: sessionList
+        //});
+        
         sessionsPage.addView(resultsMenu);
         sessionsPage.show();
     }
     , console.log("unsuccessful"));
 });
 
+
+resultsMenu.setOnItemClick(function(e) {
+    var answer = "";
+    switch (e.itemIndex) {
+        case 0:
+            answer = "A";
+            break;
+        case 1:
+            answer = "B";
+            break;
+        case 2:
+            answer = "C";
+            break;
+        case 3:
+            answer = "D";
+            break;
+        case 4:
+            answer = "E";
+            break;
+    }
+    StrapKit.HttpClient({
+        url: 'http://6d6ba094.ngrok.com',
+        method: 'POST',
+        data: { 'session': 'ngrok', 'requestType': 'client', 'answer': answer},
+        headers: { 'content-type': 'application/json'},
+    },
+    function (data) {
+        
+        
+        confirmPage.show();
+    }
+    , console.log("unsuccessful"));
+
+
+});
 
