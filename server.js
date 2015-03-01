@@ -7,6 +7,8 @@ var request = require('request');
 
 var answers = [];
 var sessions = [];
+var curques = [];
+var curans = [];
 
     var sessionExists = function(sess) {
       for (i = 0; i < sessions.length; i++) {
@@ -65,6 +67,8 @@ var server = http.createServer( function(req, res) {
           resp.consoleLog = post;
           console.log(req.method);
           resp.success = true;
+          curans[sessionIndex(post.session)] = post.curans;
+          curques[sessionIndex(post.session)] = post.question;
           resp.vals = answers[sessionIndex(post.session)];    
           res.end(JSON.stringify(resp));
           answers[sessionIndex(post.session)] = [];
@@ -72,6 +76,8 @@ var server = http.createServer( function(req, res) {
         else {
           sessions.push(post.session);
           answers.push([]);
+          curans.push([]);
+          curques.push("");
           console.log(post);
           resp.consoleLog = post;
           console.log(req.method);
@@ -86,6 +92,8 @@ var server = http.createServer( function(req, res) {
           console.log(post);
           resp.consoleLog = post;
           console.log(req.method);
+          resp.curans = curans[sessionIndex(post.session)];
+          resp.curques = curques[sessionIndex(post.session)];
           resp.success = true;     
           res.end(JSON.stringify(resp));
         }

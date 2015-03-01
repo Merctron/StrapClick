@@ -7,6 +7,7 @@
 #display {
 	text-align: center;
 	visibility: hidden;
+	background-color: white;
 }
 
 #edit {
@@ -20,8 +21,23 @@
 #homeContainer {
 	text-align: center;
 	margin-top: 10%;
+	background-color: transparent;
+}
+
+.home {
+	background-image: url("gg.png");
+
 }
 
 .edbtn {
 
 }
+
+#startButton {
+	border: black 10px solid;
+}
+
+.datadisplay {
+	text-align: center;
+}
+
