@@ -12,4 +12,4 @@ Angular.js
 
 # About
 
-StrapClick was built under 36 hours at HackIllinois. Check out our[winning submission on DevPost](https://devpost.com/software/strap-click).
+StrapClick was built under 36 hours at HackIllinois. Check out our [winning submission on DevPost](https://devpost.com/software/strap-click).
